@@ -36,17 +36,6 @@
     --max-width: 1200px;
 }
 
-/* Light Mode Overrides (Optional - can be toggled via class) */
-@media (prefers-color-scheme: light) {
-    :root {
-        /* Keeping dark mode as default/primary as per request for "Cyber/Space" vibe, 
-        but providing light tokens just in case */
-        --glass-bg: rgba(255, 255, 255, 0.6);
-        --glass-border: rgba(0, 0, 0, 0.1);
-        --text-primary: #000000;
-        --text-secondary: rgba(60, 60, 67, 0.6);
-    }
-}
 
 /* --- Global Reset & Base --- */
 * {
