@@ -37,6 +37,7 @@
 }
 
 
+
 /* --- Global Reset & Base --- */
 * {
     box-sizing: border-box;
@@ -49,9 +50,9 @@ body {
     background-color: var(--system-bg);
     background-image: url('../images/bg_main.png?v=2');
     background-size: cover;
-    background-position: center center;
+    background-position: center top;
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-attachment: fixed;
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
@@ -75,6 +76,15 @@ a {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    transition: max-width 0.3s ease;
+}
+
+/* Large Screens */
+@media (min-width: 1600px) {
+    :root {
+        --max-width: 1600px;
+        --page-padding: 60px;
+    }
 }
 
 /* --- Header --- */
@@ -138,7 +148,8 @@ a {
     display: flex;
     flex-direction: column;
     position: relative;
-    height: 320px;
+    min-height: 320px;
+    height: auto;
     /* Base height */
 }
 
