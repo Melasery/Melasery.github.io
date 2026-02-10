@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zelij Digital Jacquard | Marouan El-Asery</title>
+    <meta name="description"
+        content="Algorithmic translation of traditional Moroccan geometric patterns into machine-knitted jacquard fabric.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/icloud_theme.css">
+    <style>
+        /* Local Overrides for Content */
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .action-bar {
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #d4d4d4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding">
+                
+            </div>
+            <div class="action-bar">
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            <section class="hero-section">
+                <h1>Zelij Digital Jacquard</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Algorithmic translation of traditional Moroccan geometric patterns into machine-knitted jacquard
+                    fabric.
+                </p>
+
+                <img src="images/5.png" class="hero-img" alt="Completed zelij jacquard fabric">
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> A computational pipeline to convert binary patterns into
+                            double-bed jacquard knit structures.</li>
+                        <li><strong>Why it matters:</strong> Bridges heritage craft with digital fabrication, enabling
+                            rapid translation of complex geometries.</li>
+                        <li><strong>Proof:</strong> Successfully fabricated reversible jacquard textiles on Shima Seiki
+                            industrial machines.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">Project Specs</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Role:</strong> Computational Designer</li>
+                    <li><strong>Methods:</strong> Jacquard, Pixel Mapping</li>
+                    <li><strong>Tools:</strong> JS, Knitout, Shima Seiki</li>
+                    <li><strong>Outcome:</strong> Algorithmic Knitting Pipeline</li>
+                </ul>
+            </aside>
+
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    <em>Zelij</em> (زليج) refers to the intricate geometric tilework that has defined Moroccan
+                    architecture for centuries. These patterns—often featuring tessellating stars and polygons—embody a
+                    sophisticated mathematical design language.
+                </p>
+                <p>
+                    The goal of this project was to translate these traditional patterns into contemporary digital
+                    fabrication. The core challenge was maintaining pattern fidelity while translating high-resolution
+                    geometric designs into the discrete, physical constraints of industrial knitting (mapping pixels to
+                    stitches across two needle beds).
+                </p>
+            </section>
+
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I developed the end-to-end computational pipeline (<code>chamomile.js</code>) that parses binary
+                    pattern images and generates low-level machine instructions (Knitout). I also managed the material
+                    fabrication on Shima Seiki machines, iterating on tension and carrier settings to achieve a stable
+                    double-jacquard structure.
+                </p>
+            </section>
+
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>1. Pattern Processing</h3>
+                <p>
+                    The workflow begins with selecting a tiling zelij motif (e.g., an eight-pointed star). The pattern
+                    is algorithmically multiplied to create a seamless repeat and formatted as a binary (2-color) PNG
+                    map, where pixel dimensions directly correspond to fabric stitches and courses.
+                </p>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="images/1.png" alt="Original zelij tile pattern">
+                        <figcaption>Source zelij tile motif</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/2.png" alt="Multiplied binary pattern">
+                        <figcaption>Binarized pattern map</figcaption>
+                    </figure>
+                </div>
+
+                <h3>2. Pixel-to-Stitch Algorithm</h3>
+                <p>
+                    I wrote a custom JavaScript tool to process the image data. The algorithm performs a serpentine
+                    traversal (zigzag) of the image pixels and issues <code>knit</code> commands.
+                </p>
+                <p>
+                    Crucially, it implements <strong>Double Jacquard</strong> logic: for every pixel row, the machine
+                    makes two passes (one for the backing color, one for the pattern color), ensuring a reversible
+                    fabric with no long floats.
+                </p>
+
+                
+                <pre><code>// Example of color mapping logic
+function do_carrier(carrier, character) {
+    if (side[carrier] === '+') {
+        // Knit Left
+        for (let i = max; i >= min; i -= 1) {
+            if (color_choice[i-min] === character) {
+                console.log(`knit - f${i} ${carrier}`);
+            } else {
+                console.log(`knit - b${i} ${carrier}`);
+            }
+        }
+        side[carrier] = '-';
+    } else {
+        // Knit Right (logic mirrored)
+        // ...
+    }
+}</code></pre>
+
+                <h3>3. Knitout & Visualization</h3>
+                <p>
+                    The script outputs <strong>Knitout</strong> code, a machine-agnostic knitting language. I verified
+                    these instructions using a visualizer to check for dropped stitches or carrier collision issues
+                    before physical fabrication.
+                </p>
+                <figure>
+                    <img src="images/3.png" alt="Knitout visualizer preview">
+                    <figcaption>Knitout visualization showing front/back bed stitch assignments.</figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h2>Validation / Results</h2>
+                <p>
+                    The pipeline was validated by producing physical textile artifacts. The resulting fabric exhibits
+                    high pattern fidelity with crisp geometric lines. The double-bed structure provides stability and
+                    thickness suitable for upholstery or soft goods.
+                </p>
+
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="images/4.jpg" alt="Shima Seiki machine in operation">
+                        <figcaption>Shima Seiki machine fabricating the jacquard.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/5.png" alt="Final fabric detail">
+                        <figcaption>Final fabric showing reversible jacquard structure.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section>
+                <h2>Lessons + Next Steps</h2>
+                <p>
+                    <strong>Key Insight:</strong> Serpentine traversal (zigzag knitting) significantly reduced carriage
+                    travel time compared to unidirectional knitting, optimizing production speed.
+                </p>
+                <p>
+                    <strong>Next Steps:</strong> The current system is limited to 2-color binary patterns. Future work
+                    will extend the algorithm to support 3+ color jacquard using multiple yarn carriers and dithering
+                    techniques for gradients.
+                </p>
+            </section>
+
+            <section>
+                <h2>Links</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; text-align: center;">
+                    <span style="color: var(--text-tertiary);">Code/Repository available upon request.</span>
+                </div>
+            </section>
+
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

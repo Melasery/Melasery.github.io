@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Finite Element Method (FEM) Simulation | Marouan El-Asery</title>
+    <meta name="description"
+        content="A 3D Finite Element Method (FEM) solver extended for large deformations using Neo-Hookean materials.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/icloud_theme.css">
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #d4d4d4;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding"></div>
+            <div>
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            
+            <section class="hero-section">
+                <h1>Finite Element Method Simulation</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Physics Simulation, Continuum Mechanics, Large Deformations
+                </p>
+
+                <img src="assets/hero.png" class="hero-img" alt="FEM Stress Visualization">
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> A comprehensive 3D Finite Element Method (FEM) solver for
+                            simulating volumetric object deformation.</li>
+                        <li><strong>Why it matters:</strong> Accurately modeling physical materials is crucial for
+                            virtual reality, engineering, and visual effects.</li>
+                        <li><strong>Proof:</strong> Robustly converges on large deformations using Neo-Hookean physics
+                            and Newton's Method.</li>
+                    </ul>
+                </div>
+            </section>
+
+            
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">TL;DR</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Role:</strong> Developer / Researcher</li>
+                    <li><strong>Methods:</strong> FEM Simulation, Convex Optimization</li>
+                    <li><strong>Tools:</strong> Python, NumPy</li>
+                    <li><strong>Outcome:</strong> Physics Engine</li>
+                </ul>
+            </aside>
+
+            
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    Simulating the physical behavior of soft materials requires more than simple mass-spring systems. To
+                    capture realistic volume preservation and stress responses, we must model <strong>Continuum
+                        Mechanics</strong>.
+                </p>
+                <p>
+                    The goal was to implement a robust 3D FEM solver capable of handling both small (Linear Elastic) and
+                    large (Neo-Hookean) deformations, solving for static equilibrium where internal elastic forces
+                    balance external loads.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I built the simulation engine from the ground up:
+                </p>
+                <ul>
+                    <li><strong>Continuum Mechanics:</strong> Modeled deformation using the Deformation Gradient (F) and
+                        the First Piola-Kirchhoff stress tensor (P).</li>
+                    <li><strong>Material Models:</strong> Implemented both Linear Elasticity (Hooke's Law) and
+                        Neo-Hookean hyperelasticity.</li>
+                    <li><strong>Sparse Solvers:</strong> Assembled global Stiffness Matrices (K) and utilized sparse
+                        conjugate gradient solvers for efficiency.</li>
+                    <li><strong>Nonlinear Optimization:</strong> Implemented <strong>Newton's Method</strong> with a
+                        backtracking line search to robustly solve the nonlinear energy minimization problem.</li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>1. Stiffness Matrix Assembly</h3>
+                <p>
+                    A critical part of FEM is assembling the global stiffness matrix from element-wise contributions.
+                    This function computes the derivative of force with respect to position, effectively the "spring
+                    constant" for the entire mesh.
+                </p>
+                <pre><code class="language-python">def stiffness_matrix(self, vertices: array) -> spmatrix:
+    """ Computes the global sparse stiffness matrix K. """
+    
+    # Iterate over all tet elements
+    for t in range(num_tets):
+        # ... (retrieve deformation gradient F) ...
+
+        # Compute element contribution Kt = volume * dP/dx * dF/dx
+        # Chain rule: dP/dx = dP/dF * dF/dx
+        vol = volumes[t]
+        dP_dF = material.stress_differential(F)
+        dF_dxt = dF_dx[t]
+
+        dP_dxt = dP_dF @ dF_dxt
+        Kt = vol * dF_dxt.T @ dP_dxt
+
+        # Map local 12x12 matrix to global indices
+        for i in range(m):
+            for j in range(m):
+                triplets.append([index_map[i], index_map[j], Kt[i, j]])
+
+    # Construct the sparse matrix from triplets
+    K = csc_matrix((vals, (row_inds, col_inds)), shape=(N*dim, N*dim))
+    return K</code></pre>
+
+                <h3>2. Neo-Hookean Material Model</h3>
+                <p>
+                    The Neo-Hookean model extends linear elasticity to handle large rotations and deformations
+                    physically correctly. It uses the logarithm of the determinant of the deformation gradient ($J$) to
+                    enforce volume preservation (resisting compression to zero volume).
+                </p>
+                <pre><code class="language-python">class NeoHookean(Material):
+    def energy_density(self, F: array) -> float:
+        """
+        Compute energy density W for hyperelastic material.
+        W = 0.5 * mu * (I1 - dim - 2*log(J)) + 0.5 * lm * log(J)^2
+        """
+        dim = F.shape[0]
+        I1 = np.dot(F.ravel(), F.ravel())
+        logJ = np.log(np.linalg.det(F))
+        W = 0.5 * self.mu * (I1 - dim - 2 * logJ) + 0.5 * self.lm * logJ ** 2
+        return W
+
+    def stress_tensor(self, F: array) -> array:
+        """ First Piola-Kirchhoff stress tensor P. """
+        F_invT = np.linalg.inv(F).T
+        logJ = np.log(np.linalg.det(F))
+        P = self.mu * (F - F_invT) + self.lm * logJ * F_invT
+        return P</code></pre>
+            </section>
+
+            
+            <section>
+                <h2>Validation / Results</h2>
+                <p>
+                    The simulation was validated by subjecting meshes to large gravity loads. The Neo-Hookean model
+                    correctly demonstrated nonlinear stiffening at high strains, unlike linear elastic models which
+                    would invert or "blow up."
+                </p>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="assets/gallery_1.png" alt="Deformation Simulation">
+                        <figcaption>Simulating large deformation (Neo-Hookean) under gravity.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="assets/hero.png" alt="Original Mesh">
+                        <figcaption>Original mesh configuration (Reference state).</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            
+            <section>
+                <h2>Lessons + Next Steps</h2>
+                <p>
+                    <strong>Lesson:</strong> Implementing standard Newton's Method is rarely enough for physics
+                    simulation. A robust line search (globalization strategy) is absolutely necessary to prevent the
+                    solver from taking steps that invert elements.
+                </p>
+                <p>
+                    <strong>Next Steps:</strong> Extending the system to support dynamic simulation with implicit time
+                    integration (Backward Euler) for stable motion.
+                </p>
+            </section>
+
+            <section>
+                <h2>Links</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; text-align: center;">
+                    <span style="color: var(--text-light);">Code/Repository available upon request.</span>
+                </div>
+            </section>
+
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+</body>
+
+</html>

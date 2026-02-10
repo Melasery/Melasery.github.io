@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knitted Soft Sensor | Marouan El-Asery</title>
+    <meta name="description" content="Programmable textile sensing patches for soft robotic systems.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/icloud_theme.css">
+    <style>
+        /* Local Overrides for Content */
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .action-bar {
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding">
+                
+            </div>
+            <div class="action-bar">
+                <a href="../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            <section class="hero-section">
+                <h1>Knitted Soft Sensors</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Programmable textile sensing patches for soft robotic systems.
+                </p>
+
+                <img src="../assets/knitted_soft_sensor/01_hero_arm_system.jpg" class="hero-img" alt="Sensor Arm">
+
+                <div
+                    style="background: rgba(255, 230, 0, 0.1); border-left: 4px solid #FFD60A; padding: 16px; margin-bottom: 30px; border-radius: 8px;">
+                    <p style="margin: 0; font-size: 0.95rem; color: #FFF;">
+                        <strong>Note (pre-publication):</strong> This project is part of ongoing research. To protect
+                        unpublished work, I’m not sharing the full knit pattern specification or the complete Knitout/JS
+                        codebase publicly. This page focuses on the fabrication workflow, materials stack, and
+                        validation methodology. Select details can be shared after publication or in a research
+                        interview.
+                    </p>
+                </div>
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> A computational pipeline to knit custom resistive pressure
+                            sensors.</li>
+                        <li><strong>Why it matters:</strong> Soft robots need sensors that deform with them without
+                            breaking contact.</li>
+                        <li><strong>Proof:</strong> Integrated into a multi-zone robotic sleeve interacting with
+                            physical objects.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">Project Specs</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Role:</strong> Research Assistant</li>
+                    <li><strong>Stack:</strong> JS, Knitout, Python</li>
+                    <li><strong>Outcome:</strong> Functional sensing skin</li>
+                    <li><em>Code withheld (IP)</em></li>
+                </ul>
+            </aside>
+
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    Soft robots need sensors that can bend, twist, and compress without breaking contact or adding rigid
+                    hardware. Textiles are naturally compliant and body-safe, but making them behave like reliable
+                    sensors requires treating knit structure as a <strong>structure–property design problem</strong>.
+                </p>
+            </section>
+
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I developed the entire fabrication pipeline, moving from manual pattern editing to a script-driven
+                    workflow. I designed the knitted structure integrating conductive yarn and silicone tubing for
+                    durability. I validated the sensors on benchtop rigs and integrated them into a full robotic sleeve
+                    demonstration.
+                </p>
+            </section>
+
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>Fabrication Platform & Materials</h3>
+                <p>
+                    I monitored fabrication on a <strong>Shima Seiki SWG091N2</strong> WholeGarment machine. The
+                    material stack combines conductive yarn for sensing with silicone tubing integrated directly into
+                    the knit structure.
+                </p>
+
+                <h3>Computational Pipeline (JS → Knitout)</h3>
+                <p>
+                    I built a JavaScript-based pipeline to generate <strong>Knitout</strong> machine instructions. This
+                    allows for repeatable pattern generation from high-level parameters.
+                </p>
+
+                <figure>
+                    <img src="../assets/knitted_soft_sensor/04_code_preview_redacted.png" alt="Code preview workflow">
+                    <figcaption>Scripted generation workflow (JS → Knitout → Machine).</figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h2>Validation / Results</h2>
+                <p>
+                    Validation is ongoing with cyclic deformation tests (10k cycles) to measure sensitivity, hysteresis,
+                    and drift. Early results show reliable signal response.
+                </p>
+
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="../assets/knitted_soft_sensor/02_closeup_patch.jpg" alt="Patch-level integration">
+                        <figcaption>Patch-level integration</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="../assets/knitted_soft_sensor/01_hero_arm_system.jpg" alt="Full system integration">
+                        <figcaption>Multi-zone sensing</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section>
+                <h2>Lessons + Next Steps</h2>
+                <ul>
+                    <li>Scale the sensor array to full‑arm coverage.</li>
+                    <li>Explore alternative conductive materials (e.g., graphene‑coated yarn).</li>
+                    <li>Automate calibration using machine‑learning models.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Gallery</h2>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="../assets/knitted_soft_sensor/03_shima_machine.jpg" alt="Shima Seiki SWG091N2">
+                        <figcaption>Shima Seiki SWG091N2 Fabrication</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="../assets/knitted_soft_sensor/05_knitout_excerpt_redacted.png"
+                            alt="Knitout code excerpt">
+                        <figcaption>Knitout low-level instruction excerpt</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

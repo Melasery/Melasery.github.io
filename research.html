@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Marouan El-Asery</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/icloud_theme.css">
+    <style>
+        .research-paper-view {
+            background: rgba(40, 40, 45, 0.75);
+            backdrop-filter: blur(25px);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .research-header {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--system-blue);
+            margin-top: 40px;
+            margin-bottom: 16px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .intro-block {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--system-blue);
+        }
+
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .theme-block {
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .related-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .related-tag {
+            background: rgba(10, 132, 255, 0.15);
+            color: var(--system-blue);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .related-tag:hover {
+            background: rgba(10, 132, 255, 0.3);
+        }
+
+        .fit-map {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media(max-width: 600px) {
+            .fit-map {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding">
+                <a href="index.html" style="display:flex; align-items:center; gap:8px;">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <span>Home</span>
+                </a>
+                <span style="opacity: 0.4">/</span>
+                <span>Research Statement</span>
+            </div>
+        </header>
+
+        <main class="research-paper-view">
+
+            <div class="research-header">
+                <h1>Research Statement</h1>
+            </div>
+
+            
+            <section class="intro-block" style="border-left: 4px solid var(--system-blue);">
+                <p>
+                    I work at the intersection of computational textiles, soft
+                        systems, and biofabrication. My goal is to make textiles behave less
+                    like passive materials and more like engineered interfaces (sensing, heating, or
+                    scaffolding biological growth) while staying manufacturable through repeatable digital pipelines.
+                </p>
+                <p>
+                    I’m especially interested in systems where structure becomes function. Small
+                    changes in loop geometry, yarn placement, or material routing can shift electrical response, thermal
+                    transport, mechanical compliance, or growth behavior. That leads to my core research question:
+                </p>
+                <div
+                    style="font-style: italic; color: white; margin: 20px 0; border-left: 2px solid rgba(255,255,255,0.3); padding-left: 16px;">
+                    "How can we design textile micro-geometry and material composition so that a knitted object reliably
+                    expresses a desired physical behavior, and can be reproduced from code?"
+                </div>
+                <p>
+                    To answer this, I build end-to-end workflows that connect design intent to digital
+                    pattern generation, machine fabrication, and experimental validation. In practical terms, I treat
+                    the textile, the fabrication process, and the measurement setup as one coupled system, and I iterate
+                    until the physical behavior is stable and interpretable.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>Theme 1: Computational textiles as sensors and interfaces</h2>
+                <div class="theme-block">
+                    <p>
+                        In my knitted sensing work, I focus on how textile structure and conductive
+                        material placement translate deformation into a measurable signal. I’m drawn to sensing not as a
+                        standalone electronics problem, but as a materials and geometry problem: what structural changes
+                        produce stable signals under real constraints like repeatability, noise, and packaging? The
+                        projects in my portfolio document a full loop: pattern iteration, fabrication, benchtop
+                        characterization, and analysis.
+                    </p>
+                    <div class="related-list">
+                        <a href="projects/knitted_soft_sensor.html" class="related-tag">Knitted Soft Sensor</a>
+                        <a href="projects/zelij/index.html" class="related-tag">Zelij Digital Jacquard</a>
+                    </div>
+                </div>
+
+                <h2>Theme 2: Closed-loop soft systems for wearable thermal regulation</h2>
+                <div class="theme-block">
+                    <p>
+                        Thermal wearables are a direct example of where textile fabrication meets control. A heater that
+                        can’t regulate safely is not a wearable. My work here treats the textile heater, contact
+                        conditions, and the controller as a coupled system. I implemented and tuned closed-loop
+                            PID temperature control and built a logging/analysis workflow for rapid iteration
+                        and evaluation. While some pattern details are pre-publication, I share what’s transferable:
+                        controller design, validation methodology, and system-level integration decisions.
+                    </p>
+                    <div class="related-list">
+                        <a href="projects/thermal_wearables.html" class="related-tag">Thermal Wearables</a>
+                    </div>
+                </div>
+
+                <h2>Theme 3: Biofabrication and architectural-scale textile formworks</h2>
+                <div class="theme-block">
+                    <p>
+                        I’m also interested in textiles as scaffolds for biomaterials and as modular building blocks at
+                        larger scales. In the 16 cubits mycelium modules project, I developed modular
+                        knitted formworks and a reproducible fabrication pipeline using Knitout/Dat
+                        outputs. The process documentation (sketches, prototypes, and site build) captures how digital
+                        fabrication becomes real under time pressure, material uncertainty, and assembly tolerances.
+                    </p>
+                    <div class="related-list">
+                        <a href="projects/03_mycelium_16cubits/index.html" class="related-tag">Mycelium Modules</a>
+                        <a href="projects/comp355_hw3_dsl/index.html" class="related-tag">Sheet Metal DSL (Folded
+                            Logic)</a>
+                    </div>
+                </div>
+            </section>
+
+            
+            <section>
+                <h2>Methods and future direction</h2>
+                <p>
+                    Methodologically, I’m motivated by research that combines physical prototyping with computational
+                    design tools (simulation, optimization, and data/ML-guided search) while staying honest about
+                    fabrication constraints. My computational fabrication coursework strengthened this toolkit: robust
+                    geometric representations, deformation, FEM, multi-objective optimization, and Bayesian
+                    optimization. I use these methods to make textile design more systematic and reproducible.
+                </p>
+                <div class="fit-map" style="margin-top: 20px;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+                        <h4 style="margin-top:0; color:var(--text-primary);">Design Tools</h4>
+                        <p style="font-size:0.9rem; margin-bottom:0; color:var(--text-secondary);">
+                            Helping engineers specify target behavior (signal sensitivity, heat profile, compliance) and
+                            generate manufacturable structures.
+                        </p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+                        <h4 style="margin-top:0; color:var(--text-primary);">Validated Prototypes</h4>
+                        <p style="font-size:0.9rem; margin-bottom:0; color:var(--text-secondary);">
+                            Demonstrating textile systems as reliable interfaces that operate beyond a lab and scale
+                            beyond a single installation.
+                        </p>
+                    </div>
+                </div>
+                <p style="margin-top: 24px;">
+                    Across these projects, the throughline is closing the loop between idea and
+                        evidence: making systems you can fabricate, test, and iterate until they behave
+                    predictably; and documenting that process so it can be understood, reproduced, and extended.
+                </p>
+            </section>
+
+        </main>
+
+        <footer style="margin-top: 40px; text-align: center; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

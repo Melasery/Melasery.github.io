@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermal Wearables | Marouan El-Asery</title>
+    <meta name="description" content="Knitted heating interfaces with closed-loop PID control for safe regulation.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/icloud_theme.css">
+    <style>
+        /* Local Overrides for Content */
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .action-bar {
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding">
+                
+            </div>
+            <div class="action-bar">
+                <a href="../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            
+            <section class="hero-section">
+                <h1>Thermal Wearables</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Knitted heating interfaces with closed-loop PID control for safe regulation.
+                </p>
+
+                <img src="../assets/thermal_wearables/01_mitten_heater_demo.png" class="hero-img"
+                    alt="Thermal wearable mitten with knitted heater">
+
+                <div
+                    style="background: rgba(255, 230, 0, 0.1); border-left: 4px solid #FFD60A; padding: 16px; margin-bottom: 30px; border-radius: 8px;">
+                    <p style="margin: 0; font-size: 0.95rem; color: #FFF;">
+                        <strong>Note (pre-publication):</strong> This project is part of ongoing research. To protect
+                        unpublished work, I’m not sharing the full knit pattern specification or the complete Knitout/JS
+                        codebase publicly. This page focuses on the fabrication workflow, materials stack, and
+                        validation methodology. Select details can be shared after publication or in a research
+                        interview.
+                    </p>
+                </div>
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> Closed-loop thermal regulation system for wearable knit
+                            heaters.</li>
+                        <li><strong>Why it matters:</strong> Practical wearables need fast warm-up and stable safety
+                            controls despite body movement.</li>
+                        <li><strong>Proof:</strong> Validated PID implementation with real-time temperature tracking
+                            plots.</li>
+                    </ul>
+                </div>
+            </section>
+
+            
+            <aside
+                style="float: right; width: 280px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">TL;DR</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Role:</strong> Research Assistant (Firmware, Fabrication, Testing)</li>
+                    <li><strong>Methods:</strong> PID Control, Wearable Systems, Embedded Design</li>
+                    <li><strong>Tools:</strong> Arduino, JavaScript, Python, C++, Shima Seiki</li>
+                    <li><strong>Outcome:</strong> Stable, safe wearable heating prototypes (mitten, cup sleeve, etc.).
+                    </li>
+                </ul>
+                <div style="margin-top: 12px; font-size: 0.8rem; color: var(--text-tertiary);">
+                    <strong>Status:</strong> Pre-publication. Heater routing redacted.
+                </div>
+                <div style="margin-top: 12px;">
+                    <a href="https://github.com/Melasery/thermal-wearables-pid-control" target="_blank"
+                        style="color: var(--system-blue); font-size: 0.85rem;">View GitHub Repo →</a>
+                </div>
+            </aside>
+
+            
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    Wearable heating isn’t just about turning power on. Practical systems need fast warm-up without
+                    overshoot and stable regulation under changing contact and airflow conditions. This project treats
+                    the <strong>textile heater + fabrication constraints + control loop</strong> as one coupled system.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I built the textile heating elements and integrated them into soft substrates. I developed the
+                    custom Arduino firmware for closed-loop PID control, ensuring safety and stability. I also built the
+                    Python-based testing workflow to log and visualize real-time thermal performance.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>System Design & Fabrication</h3>
+                <p>
+                    The heaters are knitted on a Shima Seiki SWG091N2 machine using conductive yarn routing
+                    (proprietary) integrated into a woolen substrate. The system includes a microcontroller-based driver
+                    and thermistor feedback.
+                </p>
+
+                <h3>Control & Software</h3>
+                <p>
+                    I implemented a real-time PID loop on Arduino to track temperature setpoints. The Python plotting
+                    suite reads serial streams to visualize step response and regulation error, enabling rapid tuning of
+                    Kp, Ki, and Kd gains.
+                </p>
+
+                <figure>
+                    <img src="../assets/thermal_wearables/03_test_rig.jpg" alt="Benchtop PID test rig">
+                    <figcaption>Benchtop setup for closed-loop control tuning.</figcaption>
+                </figure>
+            </section>
+
+            
+            <section>
+                <h2>Validation / Results</h2>
+                <p>
+                    The system successfully tracks target temperatures with minimal overshoot after tuning. The plots
+                    below show the step response during a warm-up cycle.
+                </p>
+
+                <figure>
+                    <img src="../assets/thermal_wearables/04_pid_plot.png" alt="PID temperature trace plot">
+                    <figcaption>Real-time PID temperature control trace: measured vs setpoint.</figcaption>
+                </figure>
+
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="../assets/thermal_wearables/02_wrist_sample.jpg" alt="Wrist sample">
+                        <figcaption>Wearable wrist sample.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            
+            <section>
+                <h2>Lessons + Next Steps</h2>
+                <ul>
+                    <li>improve response under changing contact conditions (airflow, pressure)</li>
+                    <li>move from breadboard prototype to a more wearable electronics package (robust wiring/strain
+                        relief)</li>
+                    <li>expand evaluation (repeatability across runs, drift, and perception thresholds)</li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Gallery</h2>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="../assets/thermal_wearables/05_knitout_preview_redacted.png" alt="Knitout preview">
+                        <figcaption>Knitout simulation</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="../assets/thermal_wearables/06_shima_machine.jpg" alt="Shima Seiki machine">
+                        <figcaption>Fabrication on SWG091N2.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

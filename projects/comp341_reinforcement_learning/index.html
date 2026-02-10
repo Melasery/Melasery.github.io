@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Reinforcement Learning | Marouan El-Asery</title>
+    <meta name="description"
+        content="Implementing Value Iteration, Q-Learning, and Approximate Q-Learning for autonomous agents.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/icloud_theme.css">
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #d4d4d4;
+        }
+
+        .algorithm-box {
+            background: rgba(10, 132, 255, 0.1);
+            border-left: 4px solid var(--system-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            overflow-x: auto;
+        }
+
+        .algorithm-box strong {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: var(--system-blue);
+        }
+
+        /* MathJax styling */
+        mjx-container {
+            font-size: 1.15em !important;
+            color: var(--text-primary) !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding"></div>
+            <div>
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            
+            <section class="hero-section">
+                <h1>Reinforcement Learning</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    From Value Iteration to Q-Learning and Function Approximation
+                </p>
+
+                <img src="images/thumb.jpg" class="hero-img" alt="RL Value Map">
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> A suite of RL agents that learn optimal policies from
+                            scratch.</li>
+                        <li><strong>Why it matters:</strong> Demonstrates the progression from offline planning (MDPs)
+                            to online learning (Q-Learning) used in modern AI.</li>
+                        <li><strong>Proof:</strong> Agents successfully navigate complex grid worlds and learn to win
+                            Pacman via trial and error.</li>
+                    </ul>
+                </div>
+            </section>
+
+            
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">TL;DR</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Role:</strong> Algorithm Engineer</li>
+                    <li><strong>Methods:</strong> MDPs, Q-Learning</li>
+                    <li><strong>Tools:</strong> Python</li>
+                    <li><strong>Outcome:</strong> Learning Agents</li>
+                </ul>
+            </aside>
+
+            
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    The goal of this project was to implement core reinforcement learning algorithms to enable an agent
+                    to learn optimal behavior in a stochastic environment.
+                </p>
+                <p>
+                    We moved from <strong>model-based planning</strong> (where the world's rules are known) to
+                    <strong>model-free learning</strong> (where the agent must learn from experience), and finally to
+                    <strong>function approximation</strong> to handle large state spaces.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I implemented a complete RL pipeline:
+                </p>
+                <ul>
+                    <li><strong>Value Iteration:</strong> Offline planning using dynamic programming to compute optimal
+                        policies for known MDPs.</li>
+                    <li><strong>Q-Learning:</strong> Model-free temporal difference learning with epsilon-greedy
+                        exploration.</li>
+                    <li><strong>Approximate Q-Learning:</strong> Feature-based function approximation to generalize
+                        across states in large environments.</li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>1. Value Iteration (Model-Based)</h3>
+                <p>
+                    Value iteration computes the optimal value function $V^*(s)$ using the Bellman optimality equation.
+                    I implemented this using batch updates to ensure consistency.
+                </p>
+                <div class="algorithm-box">
+                    <strong>Bellman Optimality Equation:</strong><br>
+                    $$ V_{k+1}(s) = \max_{a} \sum_{s'} T(s, a, s') [ R(s, a, s') + \gamma V_{k}(s') ] $$
+                </div>
+
+                <h3>2. Q-Learning (Model-Free)</h3>
+                <p>
+                    Q-learning learns from experience without knowing the transition model. The agent updates its
+                    estimates incrementally:
+                    $$ Q(s, a) \leftarrow (1 - \alpha) Q(s, a) + \alpha [ r + \gamma \max_{a'} Q(s', a') ] $$
+                </p>
+                <pre><code class="language-python">def update(self, state, action, nextState, reward):
+    """Update Q-value based on observed transition"""
+    old_q = self.getQValue(state, action)
+    sample = reward + self.discount * self.computeValueFromQValues(nextState)
+    self.qValues[(state, action)] = (1 - self.alpha) * old_q + self.alpha * sample</code></pre>
+
+                <h3>3. Approximate Q-Learning (Function Approximation)</h3>
+                <p>
+                    For large grids where storing a Q-table is impossible, I implemented linear function approximation.
+                    The agent learns weights for features (e.g., "distance to ghost") rather than specific states.
+                </p>
+                <pre><code class="language-python">def getQValue(self, state, action):
+    """Q(s,a) = Σ f_i(s,a) * w_i"""
+    features = self.featExtractor.getFeatures(state, action)
+    qValue = 0.0
+    for feature in features:
+        qValue += self.weights[feature] * features[feature]
+    return qValue</code></pre>
+            </section>
+
+            
+            <section>
+                <h2>Validation / Results</h2>
+                <p>
+                    The agents were validated on various grid worlds:
+                </p>
+                <ul>
+                    <li><strong>Bridge Crossing:</strong> Tuning noise parameters allowed regular Q-learning agents to
+                        cross a narrow bridge without falling.</li>
+                    <li><strong>Pacman:</strong> The approximate Q-learning agent learned to clear the board and avoid
+                        ghosts on "mediumClassic" maps after comparable few training episodes, demonstrating effective
+                        generalization.</li>
+                </ul>
+                <figure>
+                    <img src="images/bridge_grid.jpg" alt="Bridge crossing gridworld">
+                    <figcaption>Bridge Grid: A risk-reward challenge for RL agents.</figcaption>
+                </figure>
+            </section>
+
+            
+            <section>
+                <h2>Lessons + Next Steps</h2>
+                <p>
+                    <strong>Key Insight:</strong> Features enable generalization. When the agent learns "avoid ghosts
+                    within distance 2" on one part of the board, this knowledge transfers to all positions. This is the
+                    foundation of Deep RL.
+                </p>
+            </section>
+
+            <section>
+                <h2>Links</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; text-align: center;">
+                    <a href="valueIterationAgents.py" download
+                        style="color: var(--system-blue); margin-right: 15px;">valueIterationAgents.py</a>
+                    <a href="qlearningAgents.py" download
+                        style="color: var(--system-blue); margin-right: 15px;">qlearningAgents.py</a>
+                    <a href="analysis.py" download style="color: var(--system-blue);">analysis.py</a>
+                </div>
+            </section>
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+</body>
+
+</html>

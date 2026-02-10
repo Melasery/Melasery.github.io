@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topology Optimization & Pareto Frontiers | Marouan El-Asery</title>
+    <meta name="description"
+        content="Computational design project exploring Topology Optimization (SIMP) and Multi-Objective Pareto analysis.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/icloud_theme.css">
+    <style>
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding"></div>
+            <div>
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            
+            <section class="hero-section">
+                <h1>Topology Optimization & Pareto Frontiers</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Multi-Objective Design, SIMP Method, Algorithmic Trade-offs
+                </p>
+
+                <img src="assets/hero.png" class="hero-img" alt="Optimized Bridge Structure">
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> A Topology Optimization solver combining the SIMP method with
+                            Multi-Objective analysis.</li>
+                        <li><strong>Why it matters:</strong> Real-world engineering requires balancing conflicting goals
+                            (e.g., Mass vs. Stiffness) rather than satisfying a single constraint.</li>
+                        <li><strong>Proof:</strong> Generated the Pareto Frontier for bridge designs, identifying
+                            optimal
+                            mass-compliance trade-offs.</li>
+                    </ul>
+                </div>
+            </section>
+
+            
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">TL;DR</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Methods:</strong> Topology Optimization, Pareto Analysis</li>
+                    <li><strong>Tools:</strong> Python, NumPy, Matplotlib</li>
+                    <li><strong>Outcome:</strong> Automated discovery of optimal structural forms</li>
+                </ul>
+            </aside>
+
+            
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    Engineering design often involves balancing conflicting goals—for example, a bridge should be as
+                    light as possible (low mass) but also as stiff as possible (low compliance).
+                </p>
+                <p>
+                    This project explores computational methods to automate this tradeoff, combining <strong>Topology
+                        Optimization</strong> to generate efficient shapes and <strong>Multi-Objective
+                        Optimization</strong> to
+                    navigate the design space and find the optimal set of compromises.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I implemented a complete optimization pipeline from scratch:
+                </p>
+                <ul>
+                    <li><strong>Topology Optimizer:</strong> Built a solver using the SIMP (Solid Isotropic Material
+                        with Penalization) method to "carve" optimal shapes from a block.</li>
+                    <li><strong>Optimality Criteria:</strong> Implemented the update logic with sensitivity analysis to
+                        iteratively improve the density distribution.</li>
+                    <li><strong>Pareto Analysis:</strong> Developed an efficient O(N log N) sweep-line algorithm to
+                        identify non-dominated solutions (Pareto Frontier) from thousands of design variants.</li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>1. Generating Efficient Shapes (SIMP)</h3>
+                <p>
+                    The core update logic uses an <strong>Optimality Criteria (OC)</strong> method to adjust material
+                    densities based on sensitivity analysis. It iteratively redistributes material to regions where it
+                    contributes most to stiffness.
+                </p>
+                <pre><code class="language-python">def optimality_criteria(self, s, fraction, change_limit):
+    """ Update density field based on sensitivity 's' """
+    l1, l2 = 0.0, 1.0e15 # Lagrange multipliers for volume constraint
+    
+    # Bisection search to find lambda that satisfies the volume constraint
+    while (l2 - l1) / (l1 + l2 + 1e-10) > 1e-3:
+        l_mid = 0.5 * (l1 + l2)
+        
+        # B_e = s / lambda_mid
+        # New density = old_density * sqrt(B_e) (heuristic update)
+        d_new = self.density * np.sqrt(s / (l_mid + 1e-10))
+        
+        # Apply move limits and clamp between 0 and 1...</code></pre>
+
+                <h3>2. Exploring the Trade-offs (Pareto Frontier)</h3>
+                <p>
+                    Once we can generate optimal shapes, distinguishing the "best" ones requires analyzing trade-offs. I
+                    implemented a sweep-line algorithm to find the <strong>Pareto Frontier</strong>—the set of
+                    "non-dominated" solutions where you cannot improve one metric without sacrificing the other.
+                </p>
+                <pre><code class="language-python">def pareto_front(points):
+    """ Find non-dominated points in O(N log N) """
+    # 1. Sort by X-coordinate (primary objective)
+    sorted_indices = np.lexsort((points[:, 1], points[:, 0]))
+    sorted_points = points[sorted_indices]
+    
+    pareto_points = []
+    min_y = float("inf")
+    
+    # 2. Sweep: Keep point only if its Y is better than all previous seen
+    for point in sorted_points:
+        if point[1] < min_y:
+            pareto_points.append(point)
+            min_y = point[1]
+    
+    return np.array(pareto_points)</code></pre>
+            </section>
+
+            
+            <section>
+                <h2>Results</h2>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="assets/topoopt1.png" alt="Optimized Bridge Structure">
+                        <figcaption>Topology-optimized bridge structure (SIMP method).</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="assets/pareto_final.png" alt="Pareto Frontier Plot">
+                        <figcaption>Pareto Frontier: Mass vs. Compliance trade-off curve.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            
+            <section>
+                <h2>Links</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; text-align: center;">
+                    <span style="color: var(--text-light);">Code/Repository available upon request.</span>
+                </div>
+            </section>
+
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+</body>
+
+</html>

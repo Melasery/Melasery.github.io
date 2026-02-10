@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain Specific Language for Sheet Metal | Marouan El-Asery</title>
+    <meta name="description"
+        content="A Domain Specific Language (DSL) for generating 2D laser cut patterns from 3D folded logic.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/icloud_theme.css">
+    <style>
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #d4d4d4;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding"></div>
+            <div>
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            
+            <section class="hero-section">
+                <h1>Domain Specific Language for Sheet Metal</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Computational Design, DSLs, Fabrication
+                </p>
+
+                <img src="assets/hero.png" class="hero-img" alt="DSL Folded Structure Hero">
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> An embedded Python DSL for designing folded sheet metal
+                            structures (e.g., enclosures).</li>
+                        <li><strong>Why it matters:</strong> Automates the tedious translation from 3D design intent to
+                            2D fabrication patterns.</li>
+                        <li><strong>Proof:</strong> Automatically generates laser-ready SVGs from high-level Python
+                            code.</li>
+                    </ul>
+                </div>
+            </section>
+
+            
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">TL;DR</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Role:</strong> Developer / Designer</li>
+                    <li><strong>Methods:</strong> DSL Design, Fabrication</li>
+                    <li><strong>Tools:</strong> Python, SVGWrite</li>
+                    <li><strong>Outcome:</strong> Design-to-Production Pipeline</li>
+                </ul>
+            </aside>
+
+            
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    Designing complex folded sheet metal structures (like electronics enclosures or origami-inspired
+                    robots) manually in CAD is often tedious and prone to error, especially when calculating unfold
+                    patterns.
+                </p>
+                <p>
+                    The goal was to create a <strong>Domain Specific Language (DSL)</strong> embedded in Python to
+                    automate this process, allowing users to define structures logically (as a hierarchy of tabs) rather
+                    than geometrically drafting every edge.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I built the core logic and interpreter for the DSL:
+                </p>
+                <ul>
+                    <li><strong>Embedded DSL:</strong> Implemented as a Python library where tabs are objects and
+                        relationships are defined via function calls.</li>
+                    <li><strong>Tree-Based Traversal:</strong> Designed the interpreter to traverse the component tree
+                        recursively to compute global coordinates from local relative transformations.</li>
+                    <li><strong>Fabrication Export:</strong> Automatically built the unfolded 2D geometry and exported
+                        it as an SVG for laser cutting, ensuring physical connectivity.</li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>1. The Tab Logic (Embedded DSL)</h3>
+                <p>
+                    The `Tab` class is the fundamental primitive. The `generate_child_tab` function handles the
+                    complexity of attaching a new geometric piece to a parent edge, managing spatial offsets and bend
+                    angles.
+                </p>
+                <pre><code class="language-python">@dataclass
+class Tab:
+    """ A structure that represents a tab and a bend with respect to the parent tab. """
+    parent: Optional["Tab"]
+    children: list["Tab"]
+    position: np.ndarray        # Root position
+    bend_angle: Optional[float] # Angle for 3D folding
+
+def generate_child_tab(parent, side, offset, width, length, angle=0.0, bend_angle=np.pi/2):
+    """
+    Generate a child tab attached to a parent tab.
+    side: 0=top, 1=right, 2=bottom, 3=left
+    """
+    tab = Tab(
+        parent=parent,
+        children=[],
+        width=0.0,      # Computed from geometry
+        side=side,
+        offset=offset,
+        child_width=width,
+        child_length=length,
+        bend_angle=bend_angle
+    )
+    parent.children.append(tab)
+    return tab</code></pre>
+
+                <h3>2. Usage Example: Defining a Structure</h3>
+                <p>
+                    Users can define complex, nested geometries with just a few lines of code. This script defines a
+                    root base and attaches walls to create a box-like structure. The semantic clarity improves
+                    maintainability over raw coordinate lists.
+                </p>
+                <pre><code class="language-python"># Define the base of the structure
+root = generate_root_tab(width=50, length=50)
+
+# Attach four walls to the base
+north_wall = generate_child_tab(root, side=0, offset=0, width=50, length=30, bend_angle=np.radians(90))
+east_wall  = generate_child_tab(root, side=1, offset=0, width=50, length=30, bend_angle=np.radians(90))
+south_wall = generate_child_tab(root, side=2, offset=0, width=50, length=30, bend_angle=np.radians(90))
+west_wall  = generate_child_tab(root, side=3, offset=0, width=50, length=30, bend_angle=np.radians(90))
+
+# Export the flat pattern for laser cutting
+draw_svg(root, "output_pattern.svg")</code></pre>
+            </section>
+
+            
+            <section>
+                <h2>Validation / Results</h2>
+                <p>
+                    The system was validated by generating laser-cut patterns for physical prototypes. The folded
+                    structures perfectly matched the digital 3D visualization, confirming the accuracy of the unfolding
+                    algorithm.
+                </p>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="assets/gallery_1.png" alt="Laser Cut Pattern">
+                        <figcaption>Generated 2D flat pattern for laser cutting (SVG output).</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="assets/hero.png" alt="Folded Structure">
+                        <figcaption>3D visualization of the folded sheet metal structure.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            
+            <section>
+                <h2>Lessons + Next Steps</h2>
+                <p>
+                    <strong>Key Insight:</strong> Recursion is a natural fit for physical assemblies that branch out
+                    from a core component. However, managing relative coordinate frames (local-to-global) requires
+                    careful matrix transformations.
+                </p>
+                <p>
+                    <strong>Next Steps:</strong> Adding collision detection to prevent the user from designing
+                    physically impossible folds (self-intersection).
+                </p>
+            </section>
+
+            <section>
+                <h2>Links</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; text-align: center;">
+                    <span style="color: var(--text-light);">Code/Repository available upon request.</span>
+                </div>
+            </section>
+
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+</body>
+
+</html>

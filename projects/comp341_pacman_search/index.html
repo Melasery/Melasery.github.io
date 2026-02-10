@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Search in Pacman | Marouan El-Asery</title>
+    <meta name="description"
+        content="Implementing informed and uninformed search algorithms (BFS, DFS, A*) for autonomous Pacman agents.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/icloud_theme.css">
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding"></div>
+            <div>
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            
+            <section class="hero-section">
+                <h1>AI Search in Pacman</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Informed and Uninformed Search Algorithms for Autonomous Navigation
+                </p>
+
+                <img src="images/hero.png" class="hero-img" alt="Pacman Search Visualization">
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> Intelligent agents capable of planning optimal paths through
+                            complex mazes.</li>
+                        <li><strong>Why it matters:</strong> Demonstrates the foundational graph search algorithms used
+                            in planning and logistics.</li>
+                        <li><strong>Proof:</strong> Agents solve "Eating All Dots" and "Corners" problems optimally and
+                            efficiently.</li>
+                    </ul>
+                </div>
+            </section>
+
+            
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">TL;DR</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Role:</strong> Algorithm Engineer</li>
+                    <li><strong>Methods:</strong> A*, BFS, DFS, UCS</li>
+                    <li><strong>Tools:</strong> Python</li>
+                    <li><strong>Outcome:</strong> Robust Pathfinding</li>
+                </ul>
+            </aside>
+
+            
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    In this project, the goal was to create intelligent agents capable of navigating the Pacman world,
+                    not by simple reflexes, but by planning.
+                </p>
+                <p>
+                    The core challenge involves formulating navigation and food collection as <strong>graph search
+                        problems</strong>. By abstracting the environment into states (positions, food grids) and
+                    actions (North, South, East, West), we can apply standard search algorithms to solve complex
+                    puzzles.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I implemented a suite of search algorithms and custom heuristics:
+                </p>
+                <ul>
+                    <li><strong>Uninformed Search:</strong> Implemented DFS, BFS, and UCS to handle basic maze traversal
+                        and cost optimization.</li>
+                    <li><strong>Informed Search (A*):</strong> Applied A* search with admissible heuristics to solve
+                        complex goals (like visiting all corners) efficiently.</li>
+                    <li><strong>Heuristic Design:</strong> Developed custom heuristics (e.g., maze distance to farthest
+                        food) to guide the search in large state spaces.</li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>1. Uninformed Search</h3>
+                <p>
+                    I started by implementing the foundational "uninformed" algorithms. These explore the state space
+                    without knowledge of the goal location.
+                </p>
+                <ul>
+                    <li><strong>Depth First Search (DFS):</strong> Dive deep quickly. Good for finding <em>a</em>
+                        solution, but rarely optimal.</li>
+                    <li><strong>Breadth First Search (BFS):</strong> Explore layer by layer. Guarantees the shortest
+                        path in unweighted graphs.</li>
+                    <li><strong>Uniform Cost Search (UCS):</strong> Prioritize lowest cumulative cost. Essential when
+                        actions have different costs (e.g., stepping in mud).</li>
+                </ul>
+
+                <h3>2. A* Search & Heuristics</h3>
+                <p>
+                    To solve NP-hard problems like the "Traveling Salesperson" equivalent of eating all food pellets, I
+                    used A* Search.
+                    $$ f(n) = g(n) + h(n) $$
+                    Where $g(n)$ is the cost so far, and $h(n)$ is the estimated cost to the goal.
+                </p>
+                <p>
+                    I designed the <strong>Food Search Heuristic</strong> based on the max maze distance to any
+                    remaining food pellet. This strictly underestimates the true cost (admissible) while being
+                    informative enough to prune the search space significantly.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>Validation / Results</h2>
+                <p>
+                    The agents were tested on various maze layouts:
+                </p>
+                <ul>
+                    <li><strong>Big Maze:</strong> DFS found a path but it was long and winding. BFS found the optimal
+                        shortest path.</li>
+                    <li><strong>Corners Problem:</strong> The A* agent with the custom corners heuristic expanded a
+                        fraction of the nodes compared to BFS, proving the efficiency of informed search.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Links</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; text-align: center;">
+                    <a href="search.py" download style="color: var(--system-blue); margin-right: 15px;">Download
+                        search.py</a>
+                    <a href="searchAgents.py" download style="color: var(--system-blue);">Download searchAgents.py</a>
+                </div>
+            </section>
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+</body>
+
+</html>

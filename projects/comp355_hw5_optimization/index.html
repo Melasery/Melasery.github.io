@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shape Matching & Optimization | Marouan El-Asery</title>
+    <meta name="description"
+        content="Geometric optimization techniques for shape matching and alignment using ICP and Global Search.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/icloud_theme.css">
+    <style>
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding"></div>
+            <div>
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            
+            <section class="hero-section">
+                <h1>Global Optimization & Shape Matching</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Geometric Optimization, Shape Analysis
+                </p>
+
+                <img src="assets/file-points_17.png" class="hero-img" alt="Shape Matching Optimization">
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> Robust matching algorithms for aligning 3D point clouds.</li>
+                        <li><strong>Why it matters:</strong> Essential for 3D scanning, robotics, and computer vision.
+                        </li>
+                        <li><strong>Proof:</strong> Successfully aligns noisy, disparate datasets using global
+                            optimization.</li>
+                    </ul>
+                </div>
+            </section>
+
+            
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">TL;DR</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Role:</strong> Algorithm Engineer</li>
+                    <li><strong>Methods:</strong> ICP, Basin Hopping</li>
+                    <li><strong>Tools:</strong> Python, NumPy</li>
+                    <li><strong>Outcome:</strong> Robust Geometry Alignment</li>
+                </ul>
+            </aside>
+
+            
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    This project explores geometric optimization techniques for shape matching and alignment. Given
+                    disparate point clouds or geometric datasets, the goal is to find the optimal transformation
+                    (rotation, translation, and scale) that minimizes the alignment error.
+                </p>
+                <p>
+                    I implemented Iterative Closest Point (ICP) algorithms and global optimization strategies to handle
+                    complex registration tasks, ensuring convergence even from poor initial guesses.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>Key Implementations</h2>
+                <ul>
+                    <li><strong>Point Cloud Registration:</strong> Implemented alignment logic to match noisy and
+                        partially overlapping point datasets.</li>
+                    <li><strong>Global Search Strategies:</strong> Utilized optimization techniques like basin hopping
+                        or multi-start local search to escape local minima in the transformation space.</li>
+                    <li><strong>Error Metrics:</strong> Developed custom objective functions based on Chamfer distance
+                        and point-to-plane residuals.</li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Results</h2>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="assets/file-points_0.png" alt="Initial Alignment (Random)">
+                        <figcaption>Initial state of the point clouds (misaligned).</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="assets/file-points_17.png" alt="Final Alignment (Optimized)">
+                        <figcaption>Final alignment after global optimization (ICP + Basin Hopping).</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            
+            <section>
+                <h2>Links</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; text-align: center;">
+                    <span style="color: var(--text-light);">Code/Repository available upon request.</span>
+                </div>
+            </section>
+
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>MIPS Simulator | Marouan El-Asery</title>
+    <meta name="description" content="A low-level instruction set simulator for the MIPS32 architecture written in C.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/icloud_theme.css">
+    <style>
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #d4d4d4;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            font-family: monospace;
+            white-space: pre-wrap;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding"></div>
+            <div>
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            
+            <section class="hero-section">
+                <h1>MIPS Processor Simulator</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Low-Level Instruction Set Simulation in C
+                </p>
+
+                <img src="images/hero_thumb.png" class="hero-img" alt="MIPS Simulator Visual">
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> A lightweight, robust simulator for the MIPS32 instruction
+                            set architecture.</li>
+                        <li><strong>Why it matters:</strong> Provides a transparent view into the Fetch-Decode-Execute
+                            cycle and low-level memory management.</li>
+                        <li><strong>Proof:</strong> Correctly executes MIPS machine code binaries on any host machine
+                            with cycle-accurate state tracking.</li>
+                    </ul>
+                </div>
+            </section>
+
+            
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">TL;DR</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Role:</strong> Systems Engineer</li>
+                    <li><strong>Methods:</strong> CPU Emulation, Bitwise Logic</li>
+                    <li><strong>Tools:</strong> C Programming</li>
+                    <li><strong>Outcome:</strong> Functional MIPS32 runtime</li>
+                </ul>
+            </aside>
+
+            
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    Understanding computer architecture requires more than just reading about it. The goal was to build
+                    a simulation engine that replicates the core <strong>Fetch-Decode-Execute</strong> cycle of a MIPS
+                    processor in software.
+                </p>
+                <p>
+                    Designed for educational verification, the simulator needed to model the processor's internal
+                    state—including registers, program counter, and memory segments—allowing users to trace the
+                    execution of assembly code at the bit level.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I implemented the full system architecture in C:
+                </p>
+                <ul>
+                    <li><strong>Memory Model:</strong> Simulated the MIPS memory map (Text, Data, Stack segments) with
+                        precise addressing logic.</li>
+                    <li><strong>Execution Engine:</strong> Built the main loop to fetch instructions, decode
+                        opcodes/operands, and execute ALU operations.</li>
+                    <li><strong>Syscall & Debug Support:</strong> Added support for fundamental system calls (I/O) and a
+                        verbose debugging mode to trace execution.</li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>1. System Architecture</h3>
+                <p>
+                    The simulator maintains a strictly defined state:
+                </p>
+                <ul>
+                    <li><strong>Memory Layout:</strong> Text Segment (0x00400000), Data Segment (0x10000000), Stack
+                        (0x7FFFFFFC).</li>
+                    <li><strong>Register File:</strong> 32 general-purpose registers, correctly handling the immutable
+                        $zero register.</li>
+                </ul>
+
+                <h3>2. The Instruction Cycle</h3>
+                <p>
+                    The core loop performs three steps for every cycle:
+                <ol>
+                    <li><strong>Fetch:</strong> Load 32-bit instruction from memory at PC.</li>
+                    <li><strong>Decode:</strong> Parse opcode, registers (rs, rt, rd), and immediate values using
+                        bitwise masks.</li>
+                    <li><strong>Execute:</strong> Dispatch control to the appropriate handler (ALU, Memory Access,
+                        Branch).</li>
+                </ol>
+                </p>
+
+                <h3>3. Valid Operations</h3>
+                <p>
+                    The simulator supports a functional subset of MIPS32, including:
+                </p>
+                <div class="code-block">
+                    ADDIU # Add Immediate Unsigned
+                    ADDU # Add Unsigned
+                    LUI # Load Upper Immediate
+                    LW / SW # Load / Store Word
+                    JAL / JR # Jump and Link / Jump Register
+                    SYSCALL # System I/O</div>
+            </section>
+
+            
+            <section>
+                <h2>Validation / Results</h2>
+                <p>
+                    The simulator successfully executes compiled MIPS binaries. Compiling with the
+                    `<code>-DDEBUG</code>` flag enables a verbose execution trace, printing the Program Counter, raw hex
+                    instruction, and decoded assembly for every cycle, which is invaluable for debugging compiler
+                    outputs.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>Links</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; text-align: center;">
+                    <a href="https://github.com/Melasery/mips-simulator" target="_blank"
+                        style="color: var(--system-blue);">View Logic on GitHub</a>
+                </div>
+            </section>
+
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+</body>
+
+</html>

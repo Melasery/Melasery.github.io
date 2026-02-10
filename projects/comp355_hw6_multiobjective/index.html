@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>AI-Driven Material Discovery | Marouan El-Asery</title>
+    <meta name="description"
+        content="Accelerating material discovery using Bayesian Optimization and Gaussian Processes.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/icloud_theme.css">
+    <style>
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding"></div>
+            <div>
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            
+            <section class="hero-section">
+                <h1>AI-Driven Material Discovery</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Bayesian Optimization, Multi-Objective Design
+                </p>
+
+                <img src="assets/hero_thumb.png" class="hero-img" alt="Pareto Frontier 3D">
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> A Bayesian Optimization framework to discover
+                            high-performance photopolymer mixtures.</li>
+                        <li><strong>Why it matters:</strong> Testing every chemical combination is impossible; AI guides
+                            the search to optimal regions efficiently.</li>
+                        <li><strong>Proof:</strong> Achieved a <strong>288× improvement</strong> in the sampled
+                            performance space compared to random search.</li>
+                    </ul>
+                </div>
+            </section>
+
+            
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">TL;DR</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Role:</strong> Machine Learning Engineer</li>
+                    <li><strong>Methods:</strong> Bayesian Optimization, Gaussian Processes</li>
+                    <li><strong>Tools:</strong> Python, NumPy</li>
+                    <li><strong>Outcome:</strong> Accelerated Discovery</li>
+                </ul>
+            </aside>
+
+            
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    Designing high-performance materials typically requires testing thousands of formulations—a slow,
+                    expensive process. With 6 base photopolymers (A-F), there are infinite possible mixtures, making
+                    exhaustive testing impossible.
+                </p>
+                <p>
+                    The goal was to demonstrate how <strong>Bayesian Optimization</strong> can accelerate material
+                    discovery by intelligently deciding which experiments to run next, maximizing properties like
+                    toughness, compression modulus, and strength simultaneously.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I implemented a probabilistic optimization loop:
+                </p>
+                <ul>
+                    <li><strong>Probabilistic Modeling:</strong> Used Gaussian Processes (GP) to model the unknown
+                        relationship between chemical composition and material properties.</li>
+                    <li><strong>Acquisition Strategy:</strong> Implemented <strong>Thompson Sampling</strong> to balance
+                        exploration (testing uncertain inputs) and exploitation (refining known good inputs).</li>
+                    <li><strong>Multi-Objective Support:</strong> Optimized for multiple conflicting objectives to
+                        identify the Pareto Frontier of material performance.</li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>1. Gaussian Process Regression</h3>
+                <p>
+                    Instead of a single prediction, a Gaussian Process predicts a probability distribution for every
+                    point in the design space. This gives us both a mean prediction and an uncertainty estimate
+                    (variance), which is crucial for safe exploration.
+                </p>
+
+                <h3>2. Exploration vs. Exploitation</h3>
+                <p>
+                    Using Thompson Sampling, the algorithm samples a function from the GP posterior and selects the
+                    maximum. This naturally encourages exploring regions with high uncertainty (high variance) that
+                    <em>could</em> be optimal, while still exploiting regions known to be good.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>Validation / Results</h2>
+                <p>
+                    After just <strong>30 iterations</strong> of optimization:
+                </p>
+                <ul>
+                    <li><strong>12 Pareto-optimal materials</strong> were discovered.</li>
+                    <li><strong>288× larger performance space</strong> explored compared to random sampling.</li>
+                    <li>Identified formulations with superior combinations of toughness and strength that were missed by
+                        intuition.</li>
+                </ul>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="assets/hero_thumb.png" alt="Pareto Frontier 3D">
+                        <figcaption>3D Pareto Frontier showing optimal trade-offs.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="assets/hypervolume.png" alt="Hypervolume Growth">
+                        <figcaption>Hypervolume indicator growth, proving search efficiency.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="assets/bars.png" alt="Material Formulations">
+                        <figcaption>Composition breakdown of discovered optimal formulations.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            
+            <section>
+                <h2>Broader Impact</h2>
+                <p>
+                    This approach isn't limited to photopolymers. The same Bayesian Optimization framework can be
+                    applied to:
+                </p>
+                <ul>
+                    <li>Concrete formulations for 3D-printed buildings</li>
+                    <li>Alloy compositions for aerospace applications</li>
+                    <li>Pharmaceutical compounds for drug discovery</li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Links</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; text-align: center;">
+                    <span style="color: var(--text-light);">Code/Repository available upon request.</span>
+                </div>
+            </section>
+
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+</body>
+
+</html>

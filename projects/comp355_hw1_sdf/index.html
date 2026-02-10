@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Representations: SDFs & Voxelization | Marouan El-Asery</title>
+    <meta name="description"
+        content="Computational geometry project implementing robust voxelization and Signed Distance Functions (SDFs).">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/icloud_theme.css">
+    <style>
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #d4d4d4;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding"></div>
+            <div>
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            
+            <section class="hero-section">
+                <h1>Geometric Representations: SDFs & Voxelization</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Computational Geometry, Implicit vs. Explicit Representations
+                </p>
+
+                <img src="assets/hero.png" class="hero-img" alt="SDF Visualization and Voxelization">
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> A robust voxelizer and Signed Distance Function (SDF) library
+                            in Python.</li>
+                        <li><strong>Why it matters:</strong> Bridges the gap between explicit (mesh) and implicit
+                            (field) geometry representations.</li>
+                        <li><strong>Proof:</strong> Successful conversion of STL meshes to Voxel Grids and back via
+                            Marching Cubes.</li>
+                    </ul>
+                </div>
+            </section>
+
+            
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">TL;DR</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Methods:</strong> Voxelization, SDFs</li>
+                    <li><strong>Tools:</strong> Python, NumPy</li>
+                    <li><strong>Outcome:</strong> Geometry Pipeline</li>
+                </ul>
+            </aside>
+
+            
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    This project investigates the fundamental differences between <strong>explicit
+                        representations</strong> (triangle meshes) and <strong>implicit representations</strong> (Signed
+                    Distance Functions) in computational geometry.
+                </p>
+                <p>
+                    The core objective was to implement robust algorithms for converting between these forms,
+                    specifically focusing on <strong>voxelization</strong> via ray-casting and <strong>surface
+                        reconstruction</strong> via Marching Cubes.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I implemented a custom geometry processing pipeline from scratch in Python. My key contributions
+                    included:
+                </p>
+                <ul>
+                    <li><strong>Robust Voxelization:</strong> A ray-casting algorithm to convert explicit Triangle
+                        Meshes (.STL) into binary Voxel Grids.</li>
+                    <li><strong>SDF Primitives & Boolean Ops:</strong> A library of vectorized distance functions
+                        (Sphere, Box, Torus) and CSG operations.</li>
+                    <li><strong>Marching Cubes Reconstruction:</strong> Bridging the gap back to explicit geometry by
+                        extracting isosurfaces from volumetric data.</li>
+                    <li><strong>Spatial Optimization:</strong> Optimizing intersection tests using bounding box pruning.
+                    </li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>1. Robust Voxelization (Ray-Casting)</h3>
+                <p>
+                    I implemented a custom voxelizer that robustly handles geometry by shooting rays through a grid. The
+                    process shoots rays through the grid and counts intersections with the mesh. By the Jordan Curve
+                    Theorem, an odd number of intersections implies a point is inside the mesh.
+                </p>
+                <pre><code class="language-python"># Cast a ray at each grid point
+ray_direction = np.array([0.0, 0.0, 1.0])
+for i in range(0, nx):
+    for j in range(0, ny):
+        # shoot a ray from the center of this voxel column
+        ray_origin = voxel_grid_min + dx * np.array([i + 0.5, j + 0.5, 0.0])
+        
+        # triangles from step 2.2 that might intersect this ray
+        triangles_to_check = tris_to_test[i][j]
+        intersections = []
+        for tri in triangles_to_check:
+            t = triangle_ray_intersection(tri, ray_origin, ray_direction)
+            if t > 0:  # only count intersections in front of the ray
+                intersections.append(t)
+        
+        intersections.sort()
+        # go through each voxel in z and check if we're inside the mesh
+        for k in range(nz):
+            voxel_z_center = voxel_grid_min[2] + (k + 0.5) * dx
+            t_center = voxel_z_center - ray_origin[2]
+
+            # count how many intersections are before this voxel
+            # if odd -> inside, even -> outside
+            num_hits = sum(1 for t in intersections if t < t_center)
+            if num_hits % 2 == 1:
+                voxels[i, j, k] = 1</code></pre>
+
+                <h3>2. SDF Primitives & Boolean Ops</h3>
+                <p>
+                    Complex shapes are composed by combining simple primitives. I built an SDF library where shapes are
+                    defined by mathematical functions, and composition is achieved via boolean operations (min/max).
+                </p>
+                <pre><code class="language-python">def op_union(sdf1, sdf2):
+    """ Union of two SDFs (minimum distance) """
+    return np.minimum(sdf1, sdf2)
+
+def op_intersection(sdf1, sdf2):
+    """ Intersection of two SDFs (maximum distance) """
+    return np.maximum(sdf1, sdf2)
+
+def op_difference(sdf1, sdf2):
+    """ Difference of two SDFs (max of sdf1 and -sdf2) """
+    return np.maximum(sdf1, -sdf2)</code></pre>
+            </section>
+
+            
+            <section>
+                <h2>Validation / Results</h2>
+                <p>
+                    The pipeline was validated by converting complex meshes to voxels and regenerating surfaces from
+                    SDFs. The results demonstrate accurate geometric processing with minimal artifacts.
+                </p>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="assets/gallery_2.png" alt="SDF Visualization">
+                        <figcaption>Visualizing the signed distance field of a complex composed shape.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="assets/gallery_1.png" alt="Voxelization Result">
+                        <figcaption>Result of the robust ray-casting voxelization algorithm.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            
+            <section>
+                <h2>Lessons + Next Steps</h2>
+                <p>
+                    <strong>Lesson:</strong> Implementing geometric algorithms from scratch highlights the importance of
+                    numerical stability, especially when dealing with ray-triangle intersections and floating-point
+                    errors.
+                </p>
+                <p>
+                    <strong>Next Steps:</strong> Extending the system to support Constructive Solid Geometry (CSG) tree
+                    parsing directly from a script files or integrating with a real-time renderer.
+                </p>
+            </section>
+
+            <section>
+                <h2>Links</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; text-align: center;">
+                    <span style="color: var(--text-light);">Code/Repository available upon request.</span>
+                </div>
+            </section>
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+</body>
+
+</html>

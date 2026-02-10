@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Marouan El-Asery</title>
+    <meta name="description" content="Portfolio of computational textiles, systems, and AI projects.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/icloud_theme.css">
+    <style>
+        /* Projects App Specifics */
+        .app-header {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 8px;
+            padding: 4px;
+            background: rgba(118, 118, 128, 0.24);
+            border-radius: 10px;
+            width: fit-content;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 7px;
+            font-family: var(--font-stack);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            color: white;
+        }
+
+        .filter-btn.active {
+            background: rgba(99, 99, 102, 0.6);
+            /* Gray 3-ish */
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+        }
+
+        /* Tile Grid for Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: rgba(44, 44, 46, 0.6);
+            /* System Gray 5 */
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            z-index: 5;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .project-image {
+            height: 160px;
+            overflow: hidden;
+            background: #2c2c2e;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-pillar {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--system-blue);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .project-summary {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding">
+                <a href="/" style="display:flex; align-items:center; gap:8px;">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <span>Home</span>
+                </a>
+                <span style="opacity: 0.4">/</span>
+                <span>Projects Library</span>
+            </div>
+
+            <div class="icloud-user-menu">
+                
+                <div class="filter-bar">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="textiles">Textiles</button>
+                    <button class="filter-btn" data-filter="design">Comp. Design</button>
+                    <button class="filter-btn" data-filter="ai">AI & ML</button>
+                    <button class="filter-btn" data-filter="systems">Systems</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="projects-grid" id="projects-grid">
+
+                
+
+                <a href="projects/knitted_soft_sensor.html" class="project-card" data-tags="textiles">
+                    <div class="project-image"><img src="assets/knitted_soft_sensor/01_hero_arm_system.jpg"
+                            alt="Sensor"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">Textiles & Soft Systems</div>
+                        <div class="project-title">Knitted Soft Sensor</div>
+                        <div class="project-summary">Resistive pressure sensors using conductive yarn and machine
+                            knitting.</div>
+                    </div>
+                </a>
+
+                <a href="projects/thermal_wearables.html" class="project-card" data-tags="textiles">
+                    <div class="project-image"><img src="assets/thermal_wearables/01_mitten_heater_demo.png"
+                            alt="Thermal"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">Textiles & Soft Systems</div>
+                        <div class="project-title">Thermal Wearables</div>
+                        <div class="project-summary">Knitted heating interfaces with closed-loop PID temperature
+                            control.</div>
+                    </div>
+                </a>
+
+                <a href="projects/03_mycelium_16cubits/index.html" class="project-card" data-tags="textiles">
+                    <div class="project-image"><img src="projects/03_mycelium_16cubits/images/11.jpg" alt="Mycelium">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-pillar">Textiles & Soft Systems</div>
+                        <div class="project-title">Mycelium Modules</div>
+                        <div class="project-summary">Modular knitted formworks for on-site mycelium assembly.</div>
+                    </div>
+                </a>
+
+                <a href="projects/zelij/index.html" class="project-card" data-tags="textiles">
+                    <div class="project-image"><img src="projects/zelij/images/5.png" alt="Zelij"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">Textiles & Soft Systems</div>
+                        <div class="project-title">Zelij Digital Jacquard</div>
+                        <div class="project-summary">Algorithmic translation of Moroccan geometric patterns into
+                            machine-knitted fabric.</div>
+                    </div>
+                </a>
+
+                
+
+                <a href="projects/comp355_hw1_sdf/index.html" class="project-card" data-tags="design">
+                    <div class="project-image"><img src="projects/comp355_hw1_sdf/assets/hero.png"
+                            onerror="this.src='assets/placeholder.png'" alt="SDF"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">Comp. Design</div>
+                        <div class="project-title">Geometric Represents.</div>
+                        <div class="project-summary">Robust voxelization, SDFs, and mesh reconstruction algorithms.
+                        </div>
+                    </div>
+                </a>
+
+                <a href="projects/comp355_hw2_csg/index.html" class="project-card" data-tags="design">
+                    <div class="project-image"><img src="images/lamp.jpeg" onerror="this.src='assets/placeholder.png'"
+                            alt="CSG"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">Comp. Design</div>
+                        <div class="project-title">Parametric & Deform</div>
+                        <div class="project-summary">Procedural CSG generation and biharmonic mesh deformation.</div>
+                    </div>
+                </a>
+
+                <a href="projects/comp355_hw3_dsl/index.html" class="project-card" data-tags="design">
+                    <div class="project-image"><img src="projects/comp355_hw3_dsl/assets/hero.png"
+                            onerror="this.src='assets/placeholder.png'" alt="DSL"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">Comp. Design</div>
+                        <div class="project-title">DSL for Sheet Metal</div>
+                        <div class="project-summary">Python-based DSL for generating laser-cut patterns and 3D folded
+                            structures.</div>
+                    </div>
+                </a>
+
+                <a href="projects/comp355_hw4_fem/index.html" class="project-card" data-tags="design">
+                    <div class="project-image"><img src="projects/comp355_hw4_fem/assets/hero.png"
+                            onerror="this.src='assets/placeholder.png'" alt="FEM"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">Comp. Design</div>
+                        <div class="project-title">Finite Element Method</div>
+                        <div class="project-summary">Static and dynamic mechanical simulation using Newton's Method.
+                        </div>
+                    </div>
+                </a>
+
+                <a href="projects/comp355_hw5_opt/index.html" class="project-card" data-tags="design">
+                    <div class="project-image"><img src="projects/comp355_hw5_opt/assets/hero.png"
+                            onerror="this.src='assets/placeholder.png'" alt="Opt"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">Comp. Design</div>
+                        <div class="project-title">Multi-Objective Opt.</div>
+                        <div class="project-summary">Topology optimization and Pareto frontier analysis for structural
+                            design.</div>
+                    </div>
+                </a>
+
+                <a href="projects/comp355_hw6_multiobjective/index.html" class="project-card" data-tags="design">
+                    <div class="project-image"><img src="projects/comp355_hw6_multiobjective/assets/hero_thumb.png"
+                            onerror="this.src='assets/placeholder.png'" alt="Material"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">Comp. Design</div>
+                        <div class="project-title">Material Discovery</div>
+                        <div class="project-summary">Bayesian optimization for photopolymer formulations (288×
+                            improvement).</div>
+                    </div>
+                </a>
+
+                
+
+                <a href="projects/comp341_reinforcement_learning/index.html" class="project-card" data-tags="ai">
+                    <div class="project-image"><img src="projects/comp341_reinforcement_learning/images/thumb.jpg"
+                            onerror="this.src='assets/placeholder.png'" alt="RL"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">AI & ML</div>
+                        <div class="project-title">Reinforcement Learning</div>
+                        <div class="project-summary">Value Iteration & Q-Learning: RL algorithms for intelligent Pacman.
+                        </div>
+                    </div>
+                </a>
+
+                <a href="projects/comp341_pacman_search/index.html" class="project-card" data-tags="ai">
+                    <div class="project-image"><img src="projects/comp341_pacman_search/images/hero.png"
+                            onerror="this.src='assets/placeholder.png'" alt="Pacman"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">AI & ML</div>
+                        <div class="project-title">AI Search in Pacman</div>
+                        <div class="project-summary">Implementing DFS, BFS, UCS, and A* for complex navigation.</div>
+                    </div>
+                </a>
+
+                <a href="projects/tic_tac_toe_ai/index.html" class="project-card" data-tags="ai">
+                    <div class="project-image"><img src="projects/tic_tac_toe_ai/images/hero_thumb.png"
+                            onerror="this.src='assets/placeholder.png'" alt="SML"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">AI & ML</div>
+                        <div class="project-title">Tic-Tac-Toe AI (SML)</div>
+                        <div class="project-summary">RL agent in Standard ML that learns optimal strategies through
+                            self-play.</div>
+                    </div>
+                </a>
+
+                <a href="projects/sml_text_classifier/index.html" class="project-card" data-tags="ai">
+                    <div class="project-image"><img src="projects/sml_text_classifier/images/hero_thumb.png"
+                            onerror="this.src='assets/placeholder.png'" alt="Classifier"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">AI & ML</div>
+                        <div class="project-title">Text Classification</div>
+                        <div class="project-summary">Modular framework using Naïve Bayes and Extract-Combine
+                            (MapReduce).</div>
+                    </div>
+                </a>
+
+                
+
+                <a href="projects/mips_simulator/index.html" class="project-card" data-tags="systems">
+                    <div class="project-image"><img src="projects/mips_simulator/images/hero_thumb.png"
+                            onerror="this.src='assets/placeholder.png'" alt="MIPS"></div>
+                    <div class="project-info">
+                        <div class="project-pillar">Systems</div>
+                        <div class="project-title">MIPS Processor Sim</div>
+                        <div class="project-summary">Low-level instruction set simulator (ISS) for MIPS32.</div>
+                    </div>
+                </a>
+
+            </div>
+        </main>
+
+        <footer style="margin-top: 40px; text-align: center; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            function applyFilter(filter) {
+                // Update UI Buttons
+                filterBtns.forEach(btn => {
+                    const btnFilter = btn.getAttribute('data-filter');
+                    if (btnFilter === filter) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                // Filter Cards
+                projectCards.forEach(card => {
+                    const cardTags = (card.getAttribute('data-tags') || '').toLowerCase();
+                    const matches = filter === 'all' || cardTags.includes(filter);
+
+                    if (matches) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.getAttribute('data-filter');
+                    applyFilter(filter);
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

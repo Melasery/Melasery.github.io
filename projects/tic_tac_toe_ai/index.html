@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Tic-Tac-Toe AI (SML) | Marouan El-Asery</title>
+    <meta name="description" content="A self-learning Tic-Tac-Toe agent implemented in Standard ML using Q-Learning.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/icloud_theme.css">
+    <style>
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #d4d4d4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding"></div>
+            <div>
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            
+            <section class="hero-section">
+                <h1>Tic-Tac-Toe AI (SML)</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Reinforcement Learning in Standard ML
+                </p>
+
+                <img src="images/hero_thumb.png" class="hero-img" alt="Tic-Tac-Toe AI Visual">
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> An AI agent that learns to play Tic-Tac-Toe from scratch
+                            using Q-Learning.</li>
+                        <li><strong>Why it matters:</strong> Demonstrates the implementation of mutable state learning
+                            algorithms within a strict functional programming paradigm.</li>
+                        <li><strong>Proof:</strong> The agent plays 100,000+ games against itself to converge on an
+                            optimal strategy before facing a human.</li>
+                    </ul>
+                </div>
+            </section>
+
+            
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">TL;DR</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Role:</strong> Software Engineer</li>
+                    <li><strong>Methods:</strong> Q-Learning, Self-Play</li>
+                    <li><strong>Tools:</strong> Standard ML (SML)</li>
+                    <li><strong>Outcome:</strong> Optimal Strategy</li>
+                </ul>
+            </aside>
+
+            
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    This project explores the intersection of <strong>Functional Programming</strong> and
+                    <strong>Reinforcement Learning</strong>. Typically, RL algorithms rely heavily on mutable state
+                    arrays, which conflicts with the immutable nature of functional languages.
+                </p>
+                <p>
+                    The goal was to build an agent that starts with zero knowledge and progressively builds a strategy,
+                    implemented entirely in <strong>Standard ML (SML)</strong>.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I implemented the core learning engine and memory structures:
+                </p>
+                <ul>
+                    <li><strong>Self-Play Training:</strong> Engineered a training loop where the agent plays against
+                        itself 100,000 times to explore the state space.</li>
+                    <li><strong>Q-Learning Logic:</strong> Implemented the Bellman update equation to refine move values
+                        based on win/loss/draw outcomes.</li>
+                    <li><strong>Functional Memory:</strong> Built a custom dictionary structure to map unique board
+                        hashes to learned values without relying on global mutable arrays.</li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>1. Functional Memory (Dictionary)</h3>
+                <p>
+                    Implementing a Dictionary in SML allowed the agent to map unique board hashes to their learned
+                    Q-values efficiently using pattern matching.
+                </p>
+                <pre><code class="language-sml">structure Dict =
+struct
+    type ('k, 'v) dict = ('k * 'v) list
+    fun empty : ('k, 'v) dict = []
+
+    fun lookup (cmp, d, k) =
+    case d of
+    [] => NONE
+    | (key, value) :: rest =>
+        if cmp(key, k) = EQUAL then SOME value
+        else lookup (cmp, rest, k)
+end</code></pre>
+
+                <h3>2. Decision Making</h3>
+                <p>
+                    During gameplay, the AI evaluates all possible next moves by looking up their successor states in
+                    its memory. Unknown states are initialized with a neutral value.
+                </p>
+                <pre><code class="language-sml">fun best_next_state (mem : memory, (board, who) : Game.state) =
+    let
+        val moves = Game.possible_moves (board, who)
+        fun get_score move =
+            let
+                val next_s = Game.make_move ((board, who), move)
+                val s_hash = Game.hash next_s
+            in
+                case Dict.lookup (String.compare, mem, s_hash) of
+                    SOME score => score
+                  | NONE => 0.0
+            end
+    in
+        (* Select move with highest score from memory *)
+    end</code></pre>
+            </section>
+
+            
+            <section>
+                <h2>Validation / Results</h2>
+                <p>
+                    After pre-training on 100,000 self-play games, the agent consistently draws against optimal play and
+                    wins against suboptimal human moves. The dictionary structure proved efficient enough to handle the
+                    complete state space of Tic-Tac-Toe (approx. 5,478 states).
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>Links</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; text-align: center;">
+                    <a href="https://github.com/Melasery/tic-tac-toe-ai" target="_blank"
+                        style="color: var(--system-blue);">View Code on GitHub</a>
+                </div>
+            </section>
+
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+</body>
+
+</html>

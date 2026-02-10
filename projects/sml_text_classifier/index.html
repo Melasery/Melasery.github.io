@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>SML Text Classifier | Marouan El-Asery</title>
+    <meta name="description"
+        content="A functional framework for text classification using Naive Bayes and MapReduce in Standard ML.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/icloud_theme.css">
+    <style>
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #d4d4d4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding"></div>
+            <div>
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            
+            <section class="hero-section">
+                <h1>SML Text Classification</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Functional Framework using Naïve Bayes and MapReduce
+                </p>
+
+                <img src="images/hero_thumb.png" class="hero-img" alt="SML Text Classifier Visual">
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> A robust text classification framework from scratch in
+                            Standard ML.</li>
+                        <li><strong>Why it matters:</strong> Demonstrates how functional programming paradigms
+                            (immutability, higher-order functions) apply to data science tasks.</li>
+                        <li><strong>Proof:</strong> Implemented a reusable "Extract-Combine" pattern that mimics
+                            MapReduce for parallel data processing.</li>
+                    </ul>
+                </div>
+            </section>
+
+            
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">TL;DR</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Role:</strong> Software Engineer</li>
+                    <li><strong>Methods:</strong> Naïve Bayes, MapReduce</li>
+                    <li><strong>Tools:</strong> Standard ML (SML)</li>
+                    <li><strong>Outcome:</strong> Parallel text pipeline</li>
+                </ul>
+            </aside>
+
+            
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    Data processing tasks are typically associated with imperative languages (like Python or C++). The
+                    goal of this project was to implement a rigorous text classification system using <strong>Standard
+                        ML</strong>, leveraging functional programming paradigms like higher-order functions and
+                    immutable data structures.
+                </p>
+                <p>
+                    At its core, the framework needed to provide a functional analogue to <strong>MapReduce</strong> to
+                    efficiently process large document sets and train a Naïve Bayes classifier.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I engineered the core functional abstractions:
+                </p>
+                <ul>
+                    <li><strong>Extract-Combine Pattern:</strong> Developed a higher-order function that maps inputs to
+                        key-value pairs (extract) and reduces them (combine), enabling modular parallelization.</li>
+                    <li><strong>Naïve Bayes Logic:</strong> Implemented the statistical classifier to probability
+                        distributions of document categories.</li>
+                    <li><strong>Modular Architecture:</strong> Designed the system to separate the parallel execution
+                        engine from the specific classification logic, allowing plug-and-play components.</li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>1. The MapReduce Abstraction (Extract-Combine)</h3>
+                <p>
+                    The `extractcombine` function is the engine of the framework. It handles the dictionary management
+                    and collision resolution entirely through recursion and pattern matching.
+                </p>
+                <pre><code class="language-sml">fun extractcombine (compare_fn, extractor_fn, combiner_fn, dataset) =
+    let
+        (* Maps key-values into the dictionary, combining collisions *)
+        fun combinePair (dict, (key, value)) =
+            case Dict.lookup (compare_fn, dict, key) of
+                NONE => Dict.insert (compare_fn, dict, (key, value))
+              | SOME existing =>
+                Dict.insert (compare_fn, dict, (key, combiner_fn (existing, value)))
+    in
+        (* ... Implementation details omitted for brevity ... *)
+        combined_result
+    end</code></pre>
+
+                <h3>2. Declarative Training Pipeline</h3>
+                <p>
+                    Training the classifier becomes a concise series of functional transformations. Here, we count total
+                    words per category by mapping each document to a (Category, WordCount) pair and summing them.
+                </p>
+                <pre><code class="language-sml">(* Calculate the total number of words in each category *)
+val countWordsPerCategory =
+    ExtractCombine.extractcombine (
+        String.compare,
+        (* Extract: Map each document to (Category, WordCount) *)
+        (fn (category, doc) => Seq.singleton (category, Seq.length doc)),
+        (* Combine: Sum WordCounts for the same Category *)
+        (fn (x, y) => x + y),
+        train)</code></pre>
+            </section>
+
+            
+            <section>
+                <h2>Validation / Results</h2>
+                <p>
+                    The framework successfully classifies text documents with high accuracy on standard datasets. More
+                    importantly, the modular design allows exact same `extractcombine` engine to be used for unrelated
+                    tasks (like log analysis or word counting) without modification.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>Links</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; text-align: center;">
+                    <a href="https://github.com/Melasery/sml-text-classifier" target="_blank"
+                        style="color: var(--system-blue);">View Repository on GitHub</a>
+                </div>
+            </section>
+
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+</body>
+
+</html>

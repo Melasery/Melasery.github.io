@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parametric Design & Geometric Deformation | Marouan El-Asery</title>
+    <meta name="description"
+        content="Computational design project exploring Constructive Solid Geometry (CSG) and mesh deformation algorithms.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/icloud_theme.css">
+    <style>
+        .project-content {
+            padding: 40px;
+            background: rgba(40, 40, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: background 0.2s;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #d4d4d4;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="icloud-container">
+
+        <header class="icloud-header">
+            <div class="icloud-branding"></div>
+            <div>
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="project-content">
+
+            
+            <section class="hero-section">
+                <h1>Parametric Design & Geometric Deformation</h1>
+                <p class="text-lg" style="color: var(--text-primary);">
+                    Computational Design, CSG, Shape Deformation
+                </p>
+
+                <img src="assets/hero.png" class="hero-img" alt="Parametric Design Hero">
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>What I built:</strong> A parametric design system in OpenSCAD and a mesh deformation
+                            engine in Python.</li>
+                        <li><strong>Why it matters:</strong> Enables rapid form-finding via code and physically
+                            plausible shape manipulation.</li>
+                        <li><strong>Proof:</strong> Generated complex recursive structures and interactive mesh
+                            deformations.</li>
+                    </ul>
+                </div>
+            </section>
+
+            
+            <aside
+                style="float: right; width: 250px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-left: 20px; margin-bottom: 20px;">
+                <h3 style="font-size: 1rem; margin-top: 0;">TL;DR</h3>
+                <ul style="font-size: 0.85rem; padding-left: 0; list-style: none;">
+                    <li><strong>Role:</strong> Developer / Designer</li>
+                    <li><strong>Methods:</strong> CSG, Mesh Deformation</li>
+                    <li><strong>Tools:</strong> OpenSCAD, Python</li>
+                    <li><strong>Outcome:</strong> Form Generation Tools</li>
+                </ul>
+            </aside>
+
+            
+            <section>
+                <h2>Problem / Goal</h2>
+                <p>
+                    This project explores the two sides of computational form-finding: <strong>Constructive Solid
+                        Geometry (CSG)</strong> for creating parametric shapes from scratch, and <strong>Mesh
+                        Deformation</strong> for manipulating existing geometries.
+                </p>
+                <p>
+                    The goal was to build a system that allows for both the generative creation of complex structures
+                    (like recursive furniture) and the intuitive deformation of meshes using handle-based weights.
+                </p>
+            </section>
+
+            
+            <section>
+                <h2>My Contribution</h2>
+                <p>
+                    I implemented distinct modules for generation and manipulation:
+                </p>
+                <ul>
+                    <li><strong>Parametric Scripting (OpenSCAD):</strong> Designed modular furniture where defining
+                        parameters (seat height, backrest angle) automatically update the entire 3D geometry.</li>
+                    <li><strong>Recursive Generation:</strong> Implemented algorithms to generate organic, spiral forms
+                        with controllable decay and twist parameters.</li>
+                    <li><strong>Mesh Deformation Engine:</strong> Built a system to compute vertex weights based on
+                        handle positions using both linear falloff and biharmonic energy minimization.</li>
+                </ul>
+            </section>
+
+            
+            <section>
+                <h2>Technical Approach</h2>
+
+                <h3>1. Recursive Spiral Generation (OpenSCAD)</h3>
+                <p>
+                    The "Cool Lamp" design demonstrates the power of recursion in OpenSCAD. A single module calls itself
+                    with slightly modified parameters (radius, height, rotation) to build a complex, organic structure.
+                </p>
+                <pre><code class="language-openscad">// Recursive spiral module
+module spiral(r, z, n) {
+    if (n > 0) {
+        // current ring generation
+        translate([0, 0, z])
+            rotate([0, 0, twist * (layer_count - n)])
+                difference() {
+                    cylinder(r = r, h = 1);
+                    cylinder(r = r - 1.5, h = 1);
+                }
+
+        // Recursive call: build next layer with decay
+        spiral(r * r_decay, z + layer_height, n - 1);
+    }
+}</code></pre>
+
+                <h3>2. Linear Deformation Weights (Python)</h3>
+                <p>
+                    For mesh deformation, we calculate influence weights (`W`) for each vertex based on its distance to
+                    control handles. Below is the implementation of Inverse Distance Weighting, which provides a fast
+                    but simple deformation gradient.
+                </p>
+                <pre><code class="language-python">@typechecked
+def linear_weights(V: np.ndarray, C: np.ndarray) -> np.ndarray:
+    """
+    Compute linear weights for vertices on a tetrahedral mesh.
+    V: (Nx3) vertex positions
+    C: (Hx3) handle positions
+    """
+    N, H = V.shape[0], C.shape[0]
+    W = np.zeros((N, H))
+    eps = 1e-14
+
+    for i in range(N):
+        for j in range(H):
+            # Euclidean distance between vertex and handle
+            d = np.linalg.norm(V[i] - C[j])
+            
+            # Inverse distance weighting
+            if d < eps:
+                W[i, j] = np.finfo(np.float64).max
+            else:
+                W[i, j] = 1 / d
+
+    # Normalize weights so they sum to 1 for each vertex
+    W /= W.sum(axis=1, keepdims=True)
+    return W</code></pre>
+            </section>
+
+            
+            <section>
+                <h2>Validation / Results</h2>
+                <p>
+                    The tools were validated by generating complex geometries and performing deformations that preserved
+                    local details. The recursive scripts successfully produced 3D-printable models.
+                </p>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="assets/gallery_1.png" alt="Parametric Design 1">
+                        <figcaption>Recursive Spiral Lamp generated via OpenSCAD.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="assets/gallery_2.png" alt="Parametric Design 2">
+                        <figcaption>Top-down view of the recursive spiral structure.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            
+            <section>
+                <h2>Lessons + Next Steps</h2>
+                <p>
+                    <strong>Key Insight:</strong> Simpler linear weights are computationally cheap but can lead to
+                    "candy wrapper" artifacts in deformation. Biharmonic weights solve this but are much slower to
+                    compute.
+                </p>
+                <p>
+                    <strong>Next Steps:</strong> Integrating these deformation scripts into a real-time Blender add-on
+                    for interactive editing.
+                </p>
+            </section>
+
+            <section>
+                <h2>Links</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; text-align: center;">
+                    <span style="color: var(--text-light);">Code/Repository available upon request.</span>
+                </div>
+            </section>
+        </main>
+
+        <footer style="text-align: center; padding: 40px; color: var(--text-tertiary); font-size: 0.8rem;">
+            &copy; 2025 Marouan El-Asery
+        </footer>
+
+    </div>
+</body>
+
+</html>
